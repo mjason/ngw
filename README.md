@@ -15,7 +15,7 @@ ngw
 package main
 
 import (
-  "ngw"
+  "github.com/mjason/ngw"
 )
 
 func main() {
