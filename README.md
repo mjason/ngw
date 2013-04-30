@@ -1,17 +1,14 @@
 ngw
 ===
 
-一个简单的web framework 用来开发web api，不适合用来开发web site。
+ngw是一个简单的web开发框架，十分适合用来开发web api项目，支持restful 路由控制，它包括了一个基于github.com/gorilla/mux的一个更加简单强大的路由。 包括一个mgo的两个增强函数。
 
-## install:
+===
+## 如何使用
 
-- go get labix.org/v2/mgo
-- go get github.com/gorilla/mux
-- go get github.com/mjason/ngw
+一个简单的hello word
 
-## 例子:
-
-```go
+```
 package main
 
 import (
@@ -19,30 +16,20 @@ import (
 )
 
 func main() {
-  // 添加一个路由
-  ngw.Route("/", func(a ngw.Action) {
-    a.Render([]byte(`你好吗？`))
-  })
-  // 设置监听端口，如果不设置使用的是127.0.0.1:3000
-  ngw.Listen = "127.0.0.1:5000"
-  // 启动服务器
+  ngw.Get("/", SayHello)
   ngw.Start()
 }
 
+func SayHello(a ngw.A) {
+  a.OK([]byte(`hello word`))
+}
+
 ```
-使用浏览器打开http://127.0.0.1:5000, 即可看到一端文字
 
-===
+### todo
 
-### 版本
-
-目前版本为0.1，很多东西都不稳定你懂的。
-
-===
+完善文档
 
 ### 协议
 
 采用BSD开源协议
-
-
-
